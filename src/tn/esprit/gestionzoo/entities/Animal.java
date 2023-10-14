@@ -1,10 +1,11 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Animal {
-    private String family;
-    private String name;
-    private int age;
-    private boolean isMammal;
+public sealed class Animal permits Aquatic,Terrestrial {
+    protected String family;
+    protected String name;
+    protected int age;
+    protected boolean isMammal;
+
 
     public String getFamily() {
         return family;
@@ -54,6 +55,7 @@ public class Animal {
         this.isMammal=isMammal;
     }
     public String toString() {
-    return "tn.esprit.gestionzoo.entities.Animal{"+ "Family :" +family+ ",Name :" +name+ ",Age:" +age+",IsMammel:" +isMammal;
+    return "tn.esprit.gestionzoo.entities.Animal{"+ "Family :" +family+ ",Name :" +name+ ",Age:" +age+",IsMammal:" +isMammal;
     }
 }
+
