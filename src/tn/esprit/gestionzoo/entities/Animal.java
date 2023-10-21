@@ -1,5 +1,5 @@
 package tn.esprit.gestionzoo.entities;
-
+//selaed moi je donne la permission pour ce qui vas heriter de ma classe en utilisant permits
 public sealed class Animal permits Aquatic,Terrestrial {
     protected String family;
     protected String name;

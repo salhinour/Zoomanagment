@@ -50,9 +50,27 @@ public class Main {
         System.out.println(dolphin.toString());
         Penguin penguin = new Penguin("wiw2","batri9",12,true,"cold",25);
         System.out.println(penguin.toString());
+        Dolphin d=new Dolphin();
+        d.setSwimmingSpeed(24.5f);
+        Dolphin d1=new Dolphin();
+        d.setSwimmingSpeed(21.8f);
+        Dolphin d2=new Dolphin();
+        d.setSwimmingSpeed(20.3f);
+        myZoo.addAquaticAnimal(d);
+        myZoo.addAquaticAnimal(d1);
+        myZoo.addAquaticAnimal(d2);
+        myZoo.addAquaticAnimal(penguin);
+        /*for (Aquatic aquatic : myZoo.getAquaticAnimals()){
+            if (aquatic != null) {
+                aquatic.swim();
+            }*/
 
         dolphin.swim();
         penguin.swim();
+        System.out.println("la profondeur maximale de vos pingouins dans votre zoo est "+myZoo.maxPenguinSwimmingDepth());
+        myZoo.displayNumberOfAquaticsByType();
+        System.out.println(myZoo.equals(penguin));
+
 
 
 
