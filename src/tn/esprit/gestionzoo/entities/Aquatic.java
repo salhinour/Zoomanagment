@@ -1,7 +1,7 @@
 package tn.esprit.gestionzoo.entities;
 //toutes les sous-classes doivent être déclarés avec non-sealed pour permettre l'héritage d'autres classes sans la permission
 
-public non-sealed abstract class Aquatic extends Animal {
+public abstract  non-sealed class Aquatic extends Animal {
     private String habitat;
     //INST 21
 
@@ -41,18 +41,16 @@ public non-sealed abstract class Aquatic extends Animal {
   //avec abstract on peut pas faires des instances
     public abstract void swim() ;
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (obj == null || getClass() != obj.getClass()) {
+        if (obj==null)  //est ce que mon objet est nul ou pas
             return false;
-        }
 
-        Aquatic other = (Aquatic) obj;
 
-        if ( this.getName().equals(other.getName()) && this.getAge() == other.getAge() && this.habitat.equals(other.habitat))
+        if (obj==this) //est ce que l'objet en parmatere est touvee ou pas
             return true;
-        else return  false;
+        if(obj instanceof Aquatic aquatic)
+        {
+            return aquatic.getName().equals(super.getName()) && aquatic.getAge()==super.getAge() && aquatic.habitat.equals(this.habitat);//nom vient de classe mere "super"
+        }
+        return false;
     }
 }

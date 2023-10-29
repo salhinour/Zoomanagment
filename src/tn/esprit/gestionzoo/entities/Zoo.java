@@ -1,15 +1,18 @@
 package tn.esprit.gestionzoo.entities;
 
+
+import tn.esprit.gestionzoo.exeptions.ZooFullException;
+import tn.esprit.gestionzoo.exeptions.InvalidAgeException;
 public class Zoo {
     public Animal[] animals = new Animal[25];//initialisation et declaration
-    private Animal[] aquaticAnimals; //declaration de tableau
+    private Aquatic[] aquaticAnimals; //declaration de tableau
 
     private  int nbr_aquatic;
 
     private String family;
     private String name;
     private String city;
-    final int NBR_CAGES = 25; //avec final constante ne change pas
+    final int NBR_CAGES = 3; //avec final constante ne change pas
     private int NbrAnimal = 0;
     public static int nbrAnimals = 0;
     Zoo() {
@@ -19,7 +22,8 @@ public class Zoo {
         this.name = name;
         this.city = city;
         this.animals = new Animal[NBR_CAGES];
-       aquaticAnimals= new Animal[10];
+        aquaticAnimals = new Aquatic[10];
+
 
 
     }
@@ -55,11 +59,12 @@ public class Zoo {
     public int getNbrAnimal() {
         return NbrAnimal;
     }
+    public int getNbr_aquatic(){return nbr_aquatic;}
 
     public void setNbrAnimal(int nbrAnimal) {
         NbrAnimal = nbrAnimal;
     }
-    public Animal[] getAquaticAnimals()
+    public Aquatic[] getAquaticAnimals()
     {
         return this.aquaticAnimals;
     }
@@ -77,16 +82,19 @@ public class Zoo {
         return "name :" + name + ",city :" + city + ",n° cages:" + NBR_CAGES;
     }
 
-    public boolean addAnimal(Animal animal) {
-        if (searchAnimal(animal) != -1) {
-            return false;
+
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
+//        if (searchAnimal(animal) != -1)
+//            return false;
+        if (!isZooFull()) {
+            if (animal.getAge() < 0) {
+                animals[NbrAnimal] = animal;
+                NbrAnimal++;
+            }
+            throw new InvalidAgeException("l'animal ne peut pas avoir un age négatif");
+        } else {
+            throw new ZooFullException("Zoo full");
         }
-        if (NbrAnimal < NBR_CAGES) {
-            animals[NbrAnimal] = animal;//a chaque fois ajouter un  animal a animals
-            NbrAnimal++;
-            return true;
-        } else
-            return false;
     }
 
 
@@ -149,28 +157,28 @@ public class Zoo {
             return false;
     }
    
-
+//inst29
     public float maxPenguinSwimmingDepth() {
-        float maxDepth = 0;
+        float maxDepth = 0f;//f parceque maxDepth de type float
 
-        for (Animal aquatic : aquaticAnimals) {
-            if (aquatic instanceof Penguin) {
-                float depth = ((Penguin) aquatic).getSwimmingDepth();
-                if (depth > maxDepth) {
-                    maxDepth = depth;
-                }
+        for (int i=0 ;i< nbr_aquatic ; i++) {
+            if (aquaticAnimals[i] instanceof Penguin penguin)
+            { //case bdha penguin wala classe mere matah
+                if (maxDepth < penguin.getSwimmingDepth())
+                    maxDepth = penguin.getSwimmingDepth();
             }
         }
         return maxDepth;
     }
+    //inst30
     public void displayNumberOfAquaticsByType() {
         int numberOfDolphins = 0;
         int numberOfPenguins = 0;
 
-        for (Animal aquaticAnimal : aquaticAnimals) {
-            if (aquaticAnimal instanceof Dolphin) {
+        for (int i=0;i<nbr_aquatic;i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) {
                 numberOfDolphins++;
-            } else if (aquaticAnimal instanceof Penguin) {
+            } else if (aquaticAnimals[i] instanceof Penguin) {
                 numberOfPenguins++;
             }
         }
