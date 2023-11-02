@@ -6,6 +6,8 @@ import tn.esprit.gestionzoo.entities.Penguin;
 import tn.esprit.gestionzoo.entities.Aquatic;
 import tn.esprit.gestionzoo.exeptions.ZooFullException;
 import tn.esprit.gestionzoo.exeptions.InvalidAgeException;
+import tn.esprit.gestionzoo.entities.*;
+import tn.esprit.gestionzoo.enums.Food;
 
 
 import java.net.SocketOption;
@@ -94,6 +96,20 @@ public class Main {
             System.out.println(myZoo.maxPenguinSwimmingDepth());
             myZoo.displayNumberOfAquaticsByType();
             System.out.println(myZoo.equals(penguin));
+            //prosit 8
+        System.out.println("----------------Prosit 8-----------------");
+
+        Penguin penguin1 = new Penguin("wiw2", "batri9", 12, true, "cold", 25);
+        penguin1.eatMeat(Food.MEAT);
+
+        Dolphin dolphin1 = new Dolphin("paris", 6, "Dilphino", "haw", 5, true);
+        dolphin1.eatMeat(Food.MEAT);
+
+        Terrestrial terrestrial = new Terrestrial("Bears", "Winnie", 6, true, 4);
+        terrestrial.eatPlantAndMeet(Food.BOTH);
+
+        Terrestrial terrestrial2 = new Terrestrial("Rabbits", "Bugs bunny", 2, true, 4);
+        terrestrial2.eatPlant(Food.PLANTS);
 
 
         }

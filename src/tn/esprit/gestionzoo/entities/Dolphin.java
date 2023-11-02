@@ -1,4 +1,7 @@
 package tn.esprit.gestionzoo.entities;
+
+import tn.esprit.gestionzoo.enums.Food;
+
 //extends ca veut dire que la classe dolphin herite de la classe aquatic
 public class Dolphin extends Aquatic{
     protected float swimmingSpeed;
@@ -36,4 +39,8 @@ public class Dolphin extends Aquatic{
         System.out.println("This dolphin is swimming.");
     }
 
+    @Override
+    public void eatMeat(Food meat) {
+
+    }
 }

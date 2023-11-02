@@ -1,6 +1,8 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Penguin extends Aquatic{
+import tn.esprit.gestionzoo.enums.Food;
+
+public class Penguin extends  Aquatic {
     protected float swimmingDepth;
 
     public float getSwimmingDepth()
@@ -38,5 +40,9 @@ public class Penguin extends Aquatic{
         this.swimmingDepth=swimmingDepth;
     }
 
+    @Override
+    public void eatMeat(Food meat) {
+
+    }
 }
 

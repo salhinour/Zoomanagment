@@ -1,7 +1,10 @@
 package tn.esprit.gestionzoo.entities;
 //toutes les sous-classes doivent être déclarés avec non-sealed pour permettre l'héritage d'autres classes sans la permission
 
-public abstract  non-sealed class Aquatic extends Animal {
+import tn.esprit.gestionzoo.enums.Food;
+import tn.esprit.gestionzoo.interfaces.Carnivore;
+
+public   non-sealed abstract class Aquatic extends Animal implements Carnivore<Food> {
     private String habitat;
     //INST 21
 
